@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/neuron/:path*", "destination": "/index.html" },
+    { "source": "/((?!api|assets|.*\\..*).*)", "destination": "/index.html" }
+  ]
+}
