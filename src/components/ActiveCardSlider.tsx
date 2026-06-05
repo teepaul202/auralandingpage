@@ -333,18 +333,7 @@ export default function ActiveCardSlider({ isDarkMode }: ActiveCardSliderProps) 
                     }
                   }}
                   onClick={() => {
-                    if (window.innerWidth >= 768 && isActive) {
-                      navigate(`/neuron/${card.neuronId}`);
-                    } else if (window.innerWidth >= 768) {
-                      setActiveId(card.id);
-                      setEditingCardId(card.id);
-                    } else {
-                      if (isActive) {
-                        navigate(`/neuron/${card.neuronId}`);
-                      } else {
-                        triggerProgrammaticScroll(card.id);
-                      }
-                    }
+                    navigate(`/neuron/${card.neuronId}`);
                   }}
                   className={`relative h-full rounded-[2.2rem] md:rounded-[2.6rem] border-2 cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.25,1,0.5,1)] shadow-sm snap-center ${
                     isActive
