@@ -1,0 +1,6 @@
+{
+  "name": "Aura Landing Page",
+  "description": "A sophisticated modern landing page featuring an elegant custom navigation bar and responsive split-layout hero section.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

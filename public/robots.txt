@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aura-landing-page-ebon.vercel.app/sitemap.xml

@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Proxima Nova", "ProximaNova", "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Playfair Display", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+body, button, input, select, textarea, span, div, p, a, label, nav, footer {
+  font-family: "Proxima Nova", "ProximaNova", "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background-color: #FFFFFF; /* Pure white background requested */
+  color: #1a202c;
+  overflow-x: hidden;
+}
+
+/* Custom overlay styles and noise grain keyframes if needed */
+.bg-noise {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.blink-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
