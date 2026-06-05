@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { Compass, Snowflake, Trees, Droplet, Sun, Settings, Check, RefreshCw } from 'lucide-react';
+import { Compass, Snowflake, Trees, Droplet, Sun, Settings, Check, RefreshCw, ArrowRight } from 'lucide-react';
 
 // Dynamic icon map to render Lucide icons from card configuration
 const iconMap: Record<string, any> = {
@@ -120,38 +121,44 @@ const MediaElement = ({
 };
 
 export default function ActiveCardSlider({ isDarkMode }: ActiveCardSliderProps) {
+  const navigate = useNavigate();
+
   const [cards, setCards] = useState([
     {
       id: 'card-1',
+      neuronId: '1',
       title: 'Neuro 1',
       subtitle: 'Instant compilation pipeline. Zero deployment state.',
       image: 'https://labs.google/fx/tools/flow/shared/video/2cf84dcc-d4f5-42d5-b185-cd0cc8cb6ea0',
       icon: 'Compass',
-      color: '#3b82f6', // Light Blue
+      color: '#3b82f6',
     },
     {
       id: 'card-2',
+      neuronId: '2',
       title: 'Neuro 2',
       subtitle: 'High-speed fluid matrix generation at record timelines.',
       image: 'https://labs.google/fx/tools/flow/shared/video/799b27b4-3218-48c5-9c73-c0622ce96d93',
       icon: 'Snowflake',
-      color: '#059669', // Emerald
+      color: '#059669',
     },
     {
       id: 'card-3',
+      neuronId: '3',
       title: 'Neuro 3',
       subtitle: 'Neural design synthesizers adapting to active schemas.',
       image: 'https://labs.google/fx/tools/flow/shared/image/6bc18630-3be3-4f7a-b4b7-73f1d38d262d',
       icon: 'Trees',
-      color: '#eab308', // Gold
+      color: '#eab308',
     },
     {
       id: 'card-4',
+      neuronId: '4',
       title: 'Neuro 4',
       subtitle: 'Stunning dynamic shielding, auto-hardened for secure runtime.',
       image: 'https://labs.google/fx/tools/flow/shared/image/d5b56ccf-a719-471e-a62d-42067a311676',
       icon: 'Droplet',
-      color: '#ea580c', // Orange
+      color: '#ea580c',
     },
   ]);
 
@@ -326,7 +333,18 @@ export default function ActiveCardSlider({ isDarkMode }: ActiveCardSliderProps) 
                     }
                   }}
                   onClick={() => {
-                    triggerProgrammaticScroll(card.id);
+                    if (window.innerWidth >= 768 && isActive) {
+                      navigate(`/neuron/${card.neuronId}`);
+                    } else if (window.innerWidth >= 768) {
+                      setActiveId(card.id);
+                      setEditingCardId(card.id);
+                    } else {
+                      if (isActive) {
+                        navigate(`/neuron/${card.neuronId}`);
+                      } else {
+                        triggerProgrammaticScroll(card.id);
+                      }
+                    }
                   }}
                   className={`relative h-full rounded-[2.2rem] md:rounded-[2.6rem] border-2 cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.25,1,0.5,1)] shadow-sm snap-center ${
                     isActive
@@ -389,6 +407,19 @@ export default function ActiveCardSlider({ isDarkMode }: ActiveCardSliderProps) 
                           </motion.p>
                         </div>
                       </div>
+                      {/* Explore CTA */}
+                      <motion.button
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.3, delay: 0.3 }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/neuron/${card.neuronId}`);
+                        }}
+                        className="shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 text-white text-[11px] font-sans font-semibold tracking-wide uppercase hover:bg-white/25 active:scale-95 transition-all cursor-pointer"
+                      >
+                        Explore <ArrowRight size={12} />
+                      </motion.button>
                     </div>
                   ) : (
                     // Narrow Capsule layout - show centered circular icon only at the bottom

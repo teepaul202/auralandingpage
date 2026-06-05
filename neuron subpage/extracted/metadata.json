@@ -1,0 +1,6 @@
+{
+  "name": "Neuron 1 Product Page",
+  "description": "An interactive premium showcase for Neuron 1, the enterprise operations and AI team synchronizer powered by Aura. Features rich model specifications, real-time sync deep dives, custom deployment gateway briefings, and a mock corporate checkout node installer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ActiveCardSlider from './components/ActiveCardSlider';
@@ -10,10 +11,10 @@ import AboutSection from './components/AboutSection';
 import CustomFooter from './components/CustomFooter';
 import LoaderSplash from './components/LoaderSplash';
 import ContactSection from './components/ContactSection';
-import { motion, AnimatePresence } from 'motion/react';
-import { Sparkles, ArrowRight, Check } from 'lucide-react';
+import NeuronPage from './pages/NeuronPage';
+import { AnimatePresence } from 'motion/react';
 
-export default function App() {
+function LandingPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [socialsData, setSocialsData] = useState<any>(null);
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -103,5 +104,16 @@ export default function App() {
       </div>
     </div>
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/neuron/:id" element={<NeuronPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
